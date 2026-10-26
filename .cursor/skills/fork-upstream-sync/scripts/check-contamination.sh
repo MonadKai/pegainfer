@@ -43,7 +43,8 @@ while IFS= read -r path; do
 done < <(git diff --name-only "${base_ref}...HEAD")
 
 if git show-ref --verify --quiet refs/heads/local; then
-  if git merge-base --is-ancestor local HEAD; then
+  if [[ "$(git rev-parse local)" != "$(git rev-parse HEAD)" ]] \
+    && git merge-base --is-ancestor local HEAD; then
     echo "WARN: local is an ancestor of HEAD; file list must stay contribution-only" >&2
   fi
 fi
