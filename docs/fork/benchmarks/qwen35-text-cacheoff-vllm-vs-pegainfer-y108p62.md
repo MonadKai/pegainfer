@@ -2,7 +2,7 @@
 
 > **TL;DR:** Confirmed 2026-10-26 replay of the aligned text-only `/v1/completions` load: Qwen3.5-2B/4B/9B, prefix cache off, frozen 256→64, `max_num_batched_tokens=2048`, conc 1/2/4/8/10/12/16/32, 48/48 rungs. Low-conc pegainfer TTFT is shorter; TPOT is tied; high-conc Gen crosses to vLLM (2B ~c16, 4B ~c12 TTFT / c32 Gen, 9B ~c8). Repeat vs 2026-10-15 is within ~1% Gen. `run_class=load`, not a capacity winner.
 
-Authoritative numbers: this doc and the sibling `qwen35-text-cacheoff-vllm-vs-pegainfer-y108p62.json`. Host-local raw logs (not in git): `/tmp/y108p62-qwen35-text-b2048-20261026/`. This snapshot is archive-lane: it lives under `docs/fork/`, is not registered in upstream `docs/index.md`, and is not for a PR to `pegainfer-project/pegainfer`.
+Authoritative numbers: this doc and the sibling `qwen35-text-cacheoff-vllm-vs-pegainfer-y108p62.json`. Host-local `/tmp` orchestrator trees from this campaign were ephemeral and have been removed. This snapshot is archive-lane: it lives under `docs/fork/`, is not registered in upstream `docs/index.md`, and is not for a PR to `pegainfer-project/pegainfer`.
 
 ## Scheme
 
@@ -44,7 +44,7 @@ Do not use EvalScope chat or random string prompts: Qwen3.5 on stock vLLM takes 
 
 ### Replay
 
-The scored matrix is the sibling JSON. The host orchestrator and `bench_completions.py` that produced it lived under `/tmp/y108p62-qwen35-text-b2048-20261026/` and are not a repo asset. Re-running needs that client (httpx streaming `/v1/completions` token ids), the pins above, and the fail-closed checks.
+The scored matrix is the sibling JSON. The host orchestrator and `bench_completions.py` were not checked in and are gone with the `/tmp` trees. Re-running needs a client that streams integer token ids on `/v1/completions` (httpx), the pins above, and the fail-closed checks.
 
 ## Alignment
 
