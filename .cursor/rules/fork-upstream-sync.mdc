@@ -1,0 +1,16 @@
+---
+description: This fork holds archive work and later upstream-lane work. Classify the lane before the first edit.
+alwaysApply: true
+---
+
+# Two lanes on this fork
+
+Follow `.cursor/skills/fork-upstream-sync/SKILL.md`. Confirm `origin` is `MonadKai/pegainfer` before writing.
+
+- **`docs/fork/` and the y108p62 campaign are archive.** Never submit them to `pegainfer-project/pegainfer`. Branch from `local`. Do not edit `docs/index.md` or playbooks to advertise them.
+- **Future upstream contributions:** `git checkout -b feat/<slug> main` after `main` fast-forwards `upstream/main`. No archive files on that branch.
+- Crate / upstream-doc edits with no named lane: ask. Do not guess.
+- ✅ contribution-only branch from `main`, push `origin`, wait for 给上游提 PR
+- ❌ `gh pr create` from `local` or from `docs/qwen35-…`
+- Before a canonical PR: `bash .cursor/skills/fork-upstream-sync/scripts/check-contamination.sh` must exit 0.
+- Never `git push upstream`. Archive tags are `local/<slug>-<date>`.
